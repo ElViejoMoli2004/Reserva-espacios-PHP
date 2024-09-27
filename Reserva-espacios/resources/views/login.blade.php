@@ -23,7 +23,7 @@
         </div>
         <div class="button-group">
           <button type="submit">Iniciar sesión</button>
-          <button type="button" onclick="window.location.href='{{ url('/') }}'">Cancelar</button>
+          <button type="button" onclick="window.location.href='{{ url('/home') }}'">Cancelar</button>
         </div>
         <div class="signUp-link">
           <p>¿No tienes una cuenta?<a href="{{ url('/register') }}" class="signUpBtn-link"> Regístrate</a></p>
