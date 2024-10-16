@@ -1,0 +1,68 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\registerPost;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
+class AuthController extends Controller
+{
+    public function login(){
+        return view("modules/auth/login");
+    }
+
+    public function registro(){
+        return view("modules/auth/registro");
+    }
+
+    public function registrar(Request $request)
+    {
+        $post = new registerPost;
+
+        $post->primer_nombre = $request->primer_nombre;
+        $post->segundo_nombre = $request->segundo_nombre;
+        $post->primer_apellido = $request->primer_apellido;
+        $post->segundo_apellido = $request->segundo_apellido;
+        $post->cedula = $request->cedula;
+        $post->email = $request->email;
+        $post->password = Hash::make($request->password); // Encriptar la contraseña
+        $post->telefono = $request->telefono;
+        $post->rol_id = $request->rol_id;
+
+        $post->save();
+
+        return to_route('login');
+    }
+
+
+    public function logear(Request $request){
+        $credenciales = [
+            'cedula' => $request->cedula,
+            'password' => $request->password
+
+        ];
+
+       if (Auth::attempt($credenciales)) {
+            return to_route('home');
+       } else {
+            return to_route('login');
+       }
+
+        
+    }
+
+    public function logout(){
+        Session::flush();
+        Auth::logout();
+        return to_route('login');
+    }
+
+    public function home(){
+        return view("modules.dashboard.home");
+    }
+
+}
