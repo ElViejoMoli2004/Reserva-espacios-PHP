@@ -14,7 +14,7 @@ class User extends Authenticatable
     protected $table = 'usuarios';
 
     protected $fillable = [
-        'cedula', // Asegúrate de incluir este campo
+        'cedula', 
         'name',
     ];
 
@@ -33,6 +33,6 @@ class User extends Authenticatable
 
     public function username()
     {
-        return 'cedula'; // Cambia esto si utilizas otro nombre para el campo
+        return 'cedula'; 
     }
 }
