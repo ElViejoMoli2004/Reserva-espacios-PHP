@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    {{-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -91,14 +96,55 @@
         </aside>
 
         <!-- Contenido Principal -->
-        <main class="flex-grow flex items-center justify-center">
-            <div class="text-center">
-                <h1 class="text-7xl font-semibold mb-6">Bienvenido al Sistema</h1>
-                <div id="content"></div>
-                <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
-            </div>
+        <main class="flex-grow p-6">
+            <div id="content"></div>
+            <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
+            <div class="container mt-4">
+                    <h1 class="fw-bold" style="font-size: 2.5rem;">Mostrando la información de: {{$item->primer_nombre}}</h1>
+                    <br>
+                <div class="row">
+                  <div class="col">
+                      <div class="card">
+                          <div class="card-body">
+                            <table class="table table-sm text-center">
+                              <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Primer Nombre</th>
+                                    <th>Segundo Nombre</th>
+                                    <th>Primer Apellido</th>
+                                    <th>Segundo Apellido</th>
+                                    <th>Cédula</th>
+                                    <th>Email</th>
+                                    <th>Teléfono</th>
+                                    <th>Rol ID</th>
+                                    <th>Fecha de Creación</th>
+                                    <th>Fecha de Actualización</th>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>{{$item->id}}</td>
+                                  <td>{{$item->primer_nombre}}</td>
+                                  <td>{{$item->segundo_nombre}}</td>
+                                  <td>{{$item->primer_apellido}}</td>
+                                  <td>{{$item->segundo_apellido}}</td>
+                                  <td>{{$item->cedula}}</td>
+                                  <td>{{$item->email}}</td>
+                                  <td>{{$item->telefono}}</td>
+                                  <td>{{$item->rol_id}}</td>
+                                  <td>{{$item->created_at}}</td>
+                                  <td>{{$item->updated_at}}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <a href="{{route('indexUsuarios')}}" class="btn btn-danger mt-4">Cancelar</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          
         </main>
-        
     </div>
     <script src=""></script>
 </body>

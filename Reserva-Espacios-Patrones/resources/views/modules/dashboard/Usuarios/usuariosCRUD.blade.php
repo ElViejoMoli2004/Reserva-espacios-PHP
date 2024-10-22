@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body class="bg-gray-100 text-gray-800">
@@ -91,14 +95,91 @@
         </aside>
 
         <!-- Contenido Principal -->
-        <main class="flex-grow flex items-center justify-center">
-            <div class="text-center">
-                <h1 class="text-7xl font-semibold mb-6">Bienvenido al Sistema</h1>
-                <div id="content"></div>
-                <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
+        <main class="flex-grow p-6">
+            <h1 class="text-3xl font-semibold mb-6">Usuarios</h1>
+            <div id="content"></div>
+            <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
+          
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <a href="{{ route('createUsuarios') }}" class="px-6 py-2 bg-cyan-500 text-white rounded-lg shadow-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all">
+                                    <i class="fa-solid fa-plus"></i> Agregar Usuario
+                                </a>
+                                
+                                <br><br>
+                                
+                                <table class="table table-sm table-bordered text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Primer Nombre</th>
+                                            <th>Segundo Nombre</th>
+                                            <th>Primer Apellido</th>
+                                            <th>Segundo Apellido</th>
+                                            <th>Cédula</th>
+                                            <th>Email</th>
+                                            <th>Teléfono</th>
+                                            <th>Rol ID</th>
+                                            <th>Fecha de Creación</th>
+                                            <th>Fecha de Actualización</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($items as $item)
+                                        <tr>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->primer_nombre}}</td>
+                                            <td>{{$item->segundo_nombre}}</td>
+                                            <td>{{$item->primer_apellido}}</td>
+                                            <td>{{$item->segundo_apellido}}</td>
+                                            <td>{{$item->cedula}}</td>
+                                            <td>{{$item->email}}</td>
+                                            <td>{{$item->telefono}}</td>
+                                            <td>{{$item->rol_id}}</td>
+                                            <td>{{$item->created_at}}</td>
+                                            <td>{{$item->updated_at}}</td>
+                                            <td>
+                                                <form action="{{ route('eliminar', ['id' => $item->id]) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="btn-group" role="group">
+                                                        <a href="{{ route('mostrar', $item->id) }}" class="btn btn-info">
+                                                            <i class="fa-solid fa-list"></i> Mostrar
+                                                        </a>
+                                                        <a href="{{ route('editar', $item->id) }}" class="btn btn-warning">
+                                                            <i class="fa-solid fa-pen-to-square"></i> Editar
+                                                        </a>
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa-solid fa-trash"></i> Borrar
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                
+                                                    </div>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr><td colspan="12">No hay datos en la tabla</td></tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-end">
+                                    {{$items->links()}}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+
         </main>
-        
     </div>
     <script src=""></script>
 </body>

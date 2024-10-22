@@ -45,6 +45,10 @@
         <p class="mt-4 text-center text-sm text-white">
             ¿No tienes una cuenta? <a href="{{route('registro')}}" class="text-cyan-400 hover:text-cyan-500" >Regístrate</a>
         </p>
+
+        <p class="mt-4 text-center text-sm text-white">
+            ¿Olvidaste tu Contraseña? <a href="{{route('registro')}}" class="text-cyan-400 hover:text-cyan-500" >Recuperala</a>
+        </p>
     </div>
 
 </body>

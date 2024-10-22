@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Users;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,4 +20,11 @@ Route::get('/', function () {
 Route::middleware("auth")->group(function () {
     Route::get('/home', [AuthController::class, 'home'])->name('home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/indexUsuarios', [Users::class, 'indexUsuarios'])->name('indexUsuarios');
+    Route::get('/crear', [Users::class, 'createUsuarios'])->name('createUsuarios');
+    Route::post('/crearUsuarios', [Users::class, 'crearUsuarios'])->name('crearUsuarios');
+    Route::get('/mostrar/{id}', [Users::class, 'mostrar'])->name('mostrar');
+    Route::get('/editar/{id}', [Users::class, 'editar'])->name('editar'); 
+    Route::put('/actualizar/{id}', [Users::class, 'actualizar'])->name('actualizar');
+    Route::delete('/eliminar/{id}', [Users::class, 'eliminar'])->name('eliminar');
 });
