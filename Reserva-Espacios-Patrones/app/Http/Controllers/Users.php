@@ -12,10 +12,10 @@ class Users extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function indexUsuarios()
+    public function indexAdministrador()
     {
         $items = User::paginate(10);
-        return view('modules/dashboard/Usuarios/usuariosCRUD', compact('items'));
+        return view('modules/dashboard/Administradores/usuariosCRUD', compact('items'));
     }
 
     /**
@@ -23,7 +23,7 @@ class Users extends Controller
      */
     public function createUsuarios()
     {
-        return view('modules/dashboard/Usuarios/create');
+        return view('modules/dashboard/Administradores/create');
     }
 
     /**
@@ -45,31 +45,31 @@ class Users extends Controller
 
         $post->save();
 
-        return to_route('indexUsuarios');
+        return to_route('indexAdministrador');
     }
 
     /**
      * Display the specified resource.
      */
-    public function mostrar(string $id)
+    public function mostrarAdministrador(string $id)
     {
         $item = User::find($id);
-        return view('modules/dashboard/Usuarios/mostrar', compact('item'));
+        return view('modules/dashboard/Administradores/mostrar', compact('item'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function editar(string $id)
+    public function editarAdministrador(string $id)
     {
         $item = User::find($id);
-        return view('modules/dashboard/Usuarios/editar', compact('item'));
+        return view('modules/dashboard/Administradores/editar', compact('item'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function actualizar(Request $request, string $id)
+    public function actualizarAdministrador(Request $request, string $id)
     {
         $item = User::find($id);
         $item->primer_nombre = $request->primer_nombre;
@@ -82,16 +82,16 @@ class Users extends Controller
         $item->telefono = $request->telefono;
         $item->rol_id = $request->rol_id;
         $item->save();
-        return to_route('indexUsuarios');
+        return to_route('indexAdministrador');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function eliminar(string $id)
+    public function eliminarAdministrador(string $id)
     {
         $item = User::find($id);
         $item->delete();
-        return to_route('indexUsuarios');
+        return to_route('indexAdministrador');
     }
 }

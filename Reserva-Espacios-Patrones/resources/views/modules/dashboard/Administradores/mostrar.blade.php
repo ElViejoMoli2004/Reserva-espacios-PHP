@@ -25,10 +25,25 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Usuarios</h3>
                     <ul class="space-y-2">
-                        <li><a href="{{route('indexUsuarios')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Usuarios</a></li>
+                        <li>
+                            <a href="{{route('indexAdministrador')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" style="color: inherit; text-decoration: none;">
+                               Usuarios
+                            </a>
+                         </li>
+                         
 {{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Usuarios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Usuarios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Historial de Actividades</a></li> --}}
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('crear')">Crear Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li>
                     </ul>
                 </div>
 
@@ -55,25 +70,17 @@
                 </div>
 
                 <!-- Gestión de Espacios -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('crear')">Crear Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li>
-                    </ul>
-                </div>
+                
 
                 <!-- Estadísticas y Reportes -->
-                <div>
+{{--                 <div>
                     <h3 class="text-lg font-semibold mb-2">Estadísticas y Reportes</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Informes de Uso</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Análisis de Tendencias</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Feedback de Usuarios</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 <!-- Gestión de Permisos y Roles -->
                 <div>
@@ -137,7 +144,7 @@
                                 </tr>
                               </tbody>
                             </table>
-                            <a href="{{route('indexUsuarios')}}" class="btn btn-danger mt-4">Cancelar</a>
+                            <a href="{{route('indexAdministrador')}}" class="btn btn-danger mt-4">Cancelar</a>
                           </div>
                       </div>
                   </div>

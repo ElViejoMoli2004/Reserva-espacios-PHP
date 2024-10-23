@@ -17,19 +17,36 @@
 
         <!-- Menú Desplegable -->
         <aside class="w-64 bg-gray-900 text-white flex-shrink-0">
-            <div class="p-4 text-center text-2xl font-bold">Menú</div>
+            <div class="p-4 text-center text-2xl font-bold">Menú Administradores</div>
             <nav class="flex flex-col p-4 space-y-4">
 
                 <!-- Gestión de Usuarios -->
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Usuarios</h3>
                     <ul class="space-y-2">
-                        <li><a href="{{route('indexUsuarios')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Usuarios</a></li>
+                        <li>
+                            <a href="{{route('indexAdministrador')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" style="color: inherit; text-decoration: none;">
+                               Usuarios
+                            </a>
+                         </li>
+                         
 {{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Usuarios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Usuarios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Historial de Actividades</a></li> --}}
                     </ul>
                 </div>
+
+                <!-- Gestión de Espacios -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('crear')">Crear Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li>
+                    </ul>
+                </div>
+
 
                 <!-- Gestión de Eventos -->
                 <div>
@@ -53,26 +70,17 @@
                     </ul>
                 </div>
 
-                <!-- Gestión de Espacios -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('crear')">Crear Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li>
-                    </ul>
-                </div>
+                
 
                 <!-- Estadísticas y Reportes -->
-                <div>
+{{--                 <div>
                     <h3 class="text-lg font-semibold mb-2">Estadísticas y Reportes</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Informes de Uso</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Análisis de Tendencias</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Feedback de Usuarios</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 <!-- Gestión de Permisos y Roles -->
                 <div>
@@ -100,7 +108,7 @@
             <div id="content"></div>
             <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
           
-            <div class="container mt-4">
+            <div class="container-fluid mt-4">
                 <div class="row">
                     <div class="col">
                         <div class="card">
@@ -111,75 +119,74 @@
                                 
                                 <br><br>
                                 
-                                <table class="table table-sm table-bordered text-center">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Primer Nombre</th>
-                                            <th>Segundo Nombre</th>
-                                            <th>Primer Apellido</th>
-                                            <th>Segundo Apellido</th>
-                                            <th>Cédula</th>
-                                            <th>Email</th>
-                                            <th>Teléfono</th>
-                                            <th>Rol ID</th>
-                                            <th>Fecha de Creación</th>
-                                            <th>Fecha de Actualización</th>
-                                            <th>Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($items as $item)
-                                        <tr>
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->primer_nombre}}</td>
-                                            <td>{{$item->segundo_nombre}}</td>
-                                            <td>{{$item->primer_apellido}}</td>
-                                            <td>{{$item->segundo_apellido}}</td>
-                                            <td>{{$item->cedula}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->telefono}}</td>
-                                            <td>{{$item->rol_id}}</td>
-                                            <td>{{$item->created_at}}</td>
-                                            <td>{{$item->updated_at}}</td>
-                                            <td>
-                                                <form action="{{ route('eliminar', ['id' => $item->id]) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <div class="btn-group" role="group">
-                                                        <a href="{{ route('mostrar', $item->id) }}" class="btn btn-info">
-                                                            <i class="fa-solid fa-list"></i> Mostrar
-                                                        </a>
-                                                        <a href="{{ route('editar', $item->id) }}" class="btn btn-warning">
-                                                            <i class="fa-solid fa-pen-to-square"></i> Editar
-                                                        </a>
-                                                        <button type="submit" class="btn btn-danger">
-                                                            <i class="fa-solid fa-trash"></i> Borrar
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                                
-                                                    </div>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr><td colspan="12">No hay datos en la tabla</td></tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-bordered text-center">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Primer Nombre</th>
+                                                <th>Segundo Nombre</th>
+                                                <th>Primer Apellido</th>
+                                                <th>Segundo Apellido</th>
+                                                <th>Cédula</th>
+                                                <th>Email</th>
+                                                <th>Teléfono</th>
+                                                <th>Rol ID</th>
+                                                <th>Fecha de Creación</th>
+                                                <th>Fecha de Actualización</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($items as $item)
+                                            <tr>
+                                                <td>{{$item->id}}</td>
+                                                <td>{{$item->primer_nombre}}</td>
+                                                <td>{{$item->segundo_nombre}}</td>
+                                                <td>{{$item->primer_apellido}}</td>
+                                                <td>{{$item->segundo_apellido}}</td>
+                                                <td>{{$item->cedula}}</td>
+                                                <td>{{$item->email}}</td>
+                                                <td>{{$item->telefono}}</td>
+                                                <td>{{$item->rol_id}}</td>
+                                                <td>{{$item->created_at}}</td>
+                                                <td>{{$item->updated_at}}</td>
+                                                <td>
+                                                    <form action="{{ route('eliminarAdministrador', ['id' => $item->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <div class="btn-group" role="group">
+                                                            <a href="{{ route('mostrarAdministrador', $item->id) }}" class="btn btn-info">
+                                                                <i class="fa-solid fa-list"></i> Mostrar
+                                                            </a>
+                                                            <a href="{{ route('editarAdministrador', $item->id) }}" class="btn btn-warning">
+                                                                <i class="fa-solid fa-pen-to-square"></i> Editar
+                                                            </a>
+                                                            <button type="submit" class="btn btn-danger">
+                                                                <i class="fa-solid fa-trash"></i> Borrar
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            @empty
+                                            <tr><td colspan="12">No hay datos en la tabla</td></tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+        
                                 <div class="d-flex justify-content-end">
                                     {{$items->links()}}
                                 </div>
-                                
+        
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-
         </main>
+        
     </div>
     <script src=""></script>
 </body>

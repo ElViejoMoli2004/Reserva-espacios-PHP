@@ -19,12 +19,13 @@ Route::get('/', function () {
 
 Route::middleware("auth")->group(function () {
     Route::get('/home', [AuthController::class, 'home'])->name('home');
+    Route::get('/homeUsuarios', [AuthController::class, 'homeUsuarios'])->name('homeUsuarios');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/indexUsuarios', [Users::class, 'indexUsuarios'])->name('indexUsuarios');
+    Route::get('/indexAdministrador', [Users::class, 'indexAdministrador'])->name('indexAdministrador');
     Route::get('/crear', [Users::class, 'createUsuarios'])->name('createUsuarios');
     Route::post('/crearUsuarios', [Users::class, 'crearUsuarios'])->name('crearUsuarios');
-    Route::get('/mostrar/{id}', [Users::class, 'mostrar'])->name('mostrar');
-    Route::get('/editar/{id}', [Users::class, 'editar'])->name('editar'); 
-    Route::put('/actualizar/{id}', [Users::class, 'actualizar'])->name('actualizar');
-    Route::delete('/eliminar/{id}', [Users::class, 'eliminar'])->name('eliminar');
+    Route::get('/mostrar/{id}', [Users::class, 'mostrarAdministrador'])->name('mostrarAdministrador');
+    Route::get('/editar/{id}', [Users::class, 'editarAdministrador'])->name('editarAdministrador'); 
+    Route::put('/actualizar/{id}', [Users::class, 'actualizarAdministrador'])->name('actualizarAdministrador');
+    Route::delete('/eliminar/{id}', [Users::class, 'eliminarAdministrador'])->name('eliminarAdministrador');
 });

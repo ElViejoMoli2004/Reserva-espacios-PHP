@@ -13,19 +13,10 @@
 
         <!-- Menú Desplegable -->
         <aside class="w-64 bg-gray-900 text-white flex-shrink-0">
-            <div class="p-4 text-center text-2xl font-bold">Menú Administradores</div>
+            <div class="p-4 text-center text-2xl font-bold">Menú Usuarios</div>
             <nav class="flex flex-col p-4 space-y-4">
 
-                <!-- Gestión de Usuarios -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Usuarios</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{{route('indexAdministrador')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Usuarios</a></li>
-{{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Usuarios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Usuarios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Historial de Actividades</a></li> --}}
-                    </ul>
-                </div>
+            
 
 
                 <div>

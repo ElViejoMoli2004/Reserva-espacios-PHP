@@ -70,6 +70,7 @@
                     <select id="rol_id" name="rol_id" 
                         class="mt-1 px-3 py-2 bg-white/20 backdrop-blur-md rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-cyan-300 text-white">
                         <option value="" disabled selected>Seleccione un Rol</option>
+                        <option class="text-black" value="1">1 - Administrador</option>
                         <option class="text-black" value="2">2 - Usuario</option>
                     </select>
                 </div>
@@ -81,7 +82,7 @@
                     Registrarse
                 </button>
                 <button type="button" class="px-6 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 transition-all"
-                    onclick="window.location.href='{{route ('indexUsuarios')}}'">
+                    onclick="window.location.href='{{route ('indexAdministrador')}}'">
                     Cancelar
                 </button>
             </div>

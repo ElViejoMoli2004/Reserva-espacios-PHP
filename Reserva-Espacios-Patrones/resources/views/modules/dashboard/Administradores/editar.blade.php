@@ -11,7 +11,7 @@
     <div class="backdrop-blur-lg bg-white/10 p-8 rounded-xl shadow-lg max-w-xl w-full border border-white/30">
         <h2 class="text-2xl font-semibold text-white text-center mb-6">Actualizar informacion</h2>
         
-        <form action="{{route('actualizar', ['id' => $item->id])}}" method="POST" id="registerForm">
+        <form action="{{route('actualizarAdministrador', ['id' => $item->id])}}" method="POST" id="registerForm">
           @csrf
           @method('PUT')
             <!-- Grid Container -->
@@ -67,9 +67,10 @@
                 <!-- Rol ID Selector -->
                 <div class="col-span-2">
                     <label for="rol_id" class="block text-sm text-white">Rol ID</label>
-                    <select id="rol_id" name="rol_id" 
+                    <select id="rol_id" name="rol_id" required
                         class="mt-1 px-3 py-2 bg-white/20 backdrop-blur-md rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-cyan-300 text-white">
                         <option value="" disabled selected>Seleccione un Rol</option>
+                        <option class="text-black" value="1">1 - Administrador</option>
                         <option class="text-black" value="2">2 - Usuario</option>
                     </select>
                 </div>
@@ -81,7 +82,7 @@
                     Actualizar
                 </button>
                 <button type="button" class="px-6 py-2 bg-red-500 text-white rounded-lg shadow-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 transition-all"
-                    onclick="window.location.href='{{route ('indexUsuarios')}}'">
+                    onclick="window.location.href='{{route ('indexAdministrador')}}'">
                     Cancelar
                 </button>
             </div>
