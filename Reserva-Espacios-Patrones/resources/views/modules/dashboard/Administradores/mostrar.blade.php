@@ -40,56 +40,27 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('crear')">Crear Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
+                        <li><a href="{{route('indexAdministradorEventos')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" >Espacios</a></li>
+{{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li> --}}
                     </ul>
                 </div>
 
-                <!-- Gestión de Eventos -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Eventos</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Crear Eventos</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Eventos</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Eventos</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Eventos Programados</a></li>
-                    </ul>
-                </div>
+
 
                 <!-- Gestión de Reservas -->
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Reservas</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Reservas Actuales</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Reservas</a></li>
+{{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Reservas</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Cancelar Reservas</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Notificaciones</a></li>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Notificaciones</a></li> --}}
                     </ul>
                 </div>
 
-                <!-- Gestión de Espacios -->
-                
-
-                <!-- Estadísticas y Reportes -->
-{{--                 <div>
-                    <h3 class="text-lg font-semibold mb-2">Estadísticas y Reportes</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Informes de Uso</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Análisis de Tendencias</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Feedback de Usuarios</a></li>
-                    </ul>
-                </div> --}}
-
-                <!-- Gestión de Permisos y Roles -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Permisos y Roles</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Definir Roles</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Configuración de Permisos</a></li>
-                    </ul>
-                </div>
+              
 
                 <div>
                   <h3 class="text-lg font-semibold mb-2">Salir del sistema</h3>

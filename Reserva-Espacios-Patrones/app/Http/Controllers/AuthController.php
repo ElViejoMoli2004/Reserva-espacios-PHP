@@ -69,8 +69,10 @@ class AuthController extends Controller
         return to_route('login');
     }
 
-    public function home(){
-        return view("modules.dashboard.home");
+    public function home()
+    {
+        $usuario = Auth::user(); 
+        return view("modules.dashboard.home", compact('usuario'));
     }
 
     public function homeUsuarios(){

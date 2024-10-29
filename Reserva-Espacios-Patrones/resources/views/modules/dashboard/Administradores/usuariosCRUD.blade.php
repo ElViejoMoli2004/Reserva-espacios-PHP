@@ -8,31 +8,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 
 <body class="bg-gray-100 text-gray-800">
     <!-- Layout Principal -->
     <div class="flex min-h-screen">
-
         <!-- Menú Desplegable -->
         <aside class="w-64 bg-gray-900 text-white flex-shrink-0">
             <div class="p-4 text-center text-2xl font-bold">Menú Administradores</div>
             <nav class="flex flex-col p-4 space-y-4">
-
                 <!-- Gestión de Usuarios -->
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Usuarios</h3>
                     <ul class="space-y-2">
                         <li>
-                            <a href="{{route('indexAdministrador')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" style="color: inherit; text-decoration: none;">
+                            <a href="{{route('indexAdministrador')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" style="color: inherit; text-decoration: none; outline: none;">
                                Usuarios
                             </a>
-                         </li>
-                         
-{{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Usuarios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Usuarios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Historial de Actividades</a></li> --}}
+                        </li>
                     </ul>
                 </div>
 
@@ -40,22 +33,9 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('crear')">Crear Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li>
-                    </ul>
-                </div>
-
-
-                <!-- Gestión de Eventos -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Eventos</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Crear Eventos</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Eventos</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Eventos</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Eventos Programados</a></li>
+                        <li>
+                            <a href="{{route('indexAdministradorEventos')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" style="color: inherit; text-decoration: none; outline: none;">Espacios</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -63,41 +43,20 @@
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Reservas</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Reservas Actuales</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Reservas</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Cancelar Reservas</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Notificaciones</a></li>
+                        <li>
+                            <a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" style="color: inherit; text-decoration: none; outline: none;">Ver Reservas Actuales</a>
+                        </li>
                     </ul>
                 </div>
 
-                
-
-                <!-- Estadísticas y Reportes -->
-{{--                 <div>
-                    <h3 class="text-lg font-semibold mb-2">Estadísticas y Reportes</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Informes de Uso</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Análisis de Tendencias</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Feedback de Usuarios</a></li>
-                    </ul>
-                </div> --}}
-
-                <!-- Gestión de Permisos y Roles -->
+                <!-- Salir del sistema -->
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Permisos y Roles</h3>
+                    <h3 class="text-lg font-semibold mb-2">Salir del sistema</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Definir Roles</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Configuración de Permisos</a></li>
+                        <li>
+                            <a href="{{route('logout')}}" class="block py-2 px-4 rounded-lg bg-red-500 hover:bg-red-600" style="color: inherit; text-decoration: none; outline: none;">Salir</a>
+                        </li>                  
                     </ul>
-                </div>
-
-                <div>
-                  <h3 class="text-lg font-semibold mb-2">Salir del sistema</h3>
-                  <ul class="space-y-2">
-                    <li>
-                      <a href="{{route('logout')}}" class="block py-2 px-4 rounded-lg bg-red-500 hover:bg-red-600">Salir</a>
-                  </li>                  
-                  </ul>
                 </div>
             </nav>
         </aside>
@@ -106,8 +65,6 @@
         <main class="flex-grow p-6">
             <h1 class="text-3xl font-semibold mb-6">Usuarios</h1>
             <div id="content"></div>
-            <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
-          
             <div class="container-fluid mt-4">
                 <div class="row">
                     <div class="col">
@@ -116,9 +73,7 @@
                                 <a href="{{ route('createUsuarios') }}" class="px-6 py-2 bg-cyan-500 text-white rounded-lg shadow-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all">
                                     <i class="fa-solid fa-plus"></i> Agregar Usuario
                                 </a>
-                                
                                 <br><br>
-                                
                                 <div class="table-responsive">
                                     <table class="table table-sm table-bordered text-center">
                                         <thead>
@@ -175,18 +130,15 @@
                                         </tbody>
                                     </table>
                                 </div>
-        
                                 <div class="d-flex justify-content-end">
                                     {{$items->links()}}
                                 </div>
-        
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        
     </div>
     <script src=""></script>
 </body>
