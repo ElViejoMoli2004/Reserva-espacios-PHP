@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
+
+    public function index(){
+        return view("index");
+    }
+
     public function login(){
         return view("modules/auth/login");
     }
@@ -75,8 +80,6 @@ class AuthController extends Controller
         return view("modules.dashboard.home", compact('usuario'));
     }
 
-    public function homeUsuarios(){
-        return view("modules.dashboard.homeUsuarios");
-    }
+    
 
 }

@@ -12,4 +12,9 @@ class Eventos extends Model
     protected $table = 'espacios';
 
     public $timestamps = false;
+
+    public function reserva() {
+        return $this->hasOne(Reserva::class, 'espacio_id', 'id'); // Asegúrate de que los campos coincidan
+    }
+    
 }

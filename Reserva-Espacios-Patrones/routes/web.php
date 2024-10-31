@@ -4,23 +4,22 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Users;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Events;
-
+use App\Http\Controllers\EventsUsuarios;
 
 Route::middleware("guest")->group(function () {
+    Route::get('/', [AuthController::class, 'index'])->name('index');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/registro', [AuthController::class, 'registro'])->name('registro');
     Route::post('/registrar', [AuthController::class, 'registrar'])->name('registrar');
     Route::post('/logear', [AuthController::class, 'logear'])->name('logear');
 });
 
-Route::get('/', function () {
-    return view('index'); // Asegúrate de que la ruta sea correcta
-})->name('index');
+
 
 
 Route::middleware("auth")->group(function () {
     Route::get('/home', [AuthController::class, 'home'])->name('home');
-    Route::get('/homeUsuarios', [AuthController::class, 'homeUsuarios'])->name('homeUsuarios');
+    Route::get('/homeUsuarios', [EventsUsuarios::class, 'homeUsuarios'])->name('homeUsuarios');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/indexAdministrador', [Users::class, 'indexAdministrador'])->name('indexAdministrador');
     Route::get('/crear', [Users::class, 'createUsuarios'])->name('createUsuarios');
@@ -37,6 +36,15 @@ Route::middleware("auth")->group(function () {
     Route::get('/editarEspacio/{id}', [Events::class, 'editarAdministradorEvento'])->name('editarAdministradorEvento');
     Route::put('/actualizarEspacio/{id}', [Events::class, 'actualizarAdministradorEvento'])->name('actualizarAdministradorEvento');
     Route::delete('/eliminarEspacio/{id}', [Events::class, 'eliminarAdministradorEvento'])->name('eliminarAdministradorEvento');
+    Route::get('/indexEventosUsuariosReserva', [EventsUsuarios::class, 'indexEventosUsuariosReserva'])->name('indexEventosUsuariosReserva');
+    Route::get('/reservaEvento/{id}', [EventsUsuarios::class, 'reservaEvento'])->name('reservaEvento');
+    Route::post('/crearReserva', [EventsUsuarios::class, 'crearReserva'])->name('crearReserva');
+    Route::get('/editarUsuarioReserva/{id}', [EventsUsuarios::class, 'editarUsuarioReserva'])->name('editarUsuarioReserva');
+    Route::put('/actualizarUsuarioReserva/{id}', [EventsUsuarios::class, 'actualizarUsuarioReserva'])->name('actualizarUsuarioReserva');
+    Route::delete('/eliminarUsuarioReserva/{id}', [EventsUsuarios::class, 'cancelarReserva'])->name('eliminarUsuarioReserva');
+
+    
+
     
 
 });

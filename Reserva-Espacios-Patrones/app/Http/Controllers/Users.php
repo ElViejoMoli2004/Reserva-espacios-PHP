@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\registerPost;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Users extends Controller
 {
