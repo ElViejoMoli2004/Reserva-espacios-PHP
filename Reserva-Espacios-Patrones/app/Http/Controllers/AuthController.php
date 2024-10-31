@@ -44,28 +44,27 @@ class AuthController extends Controller
     }
 
 
-    public function logear(Request $request)
-{
-    $credenciales = [
-        'cedula' => $request->cedula,
-        'password' => $request->password
-    ];
+    public function logear(Request $request){
+        $credenciales = [
+            'cedula' => $request->cedula,
+            'password' => $request->password
+        ];
 
     
-    if (Auth::attempt($credenciales)) {
-        $usuario = Auth::user();
+        if (Auth::attempt($credenciales)) {
+            $usuario = Auth::user();
 
         
-        if ($usuario->rol_id == 1) {
-            return redirect()->route('home'); 
-        } elseif ($usuario->rol_id == 2) {
-            return redirect()->route('homeUsuarios'); 
-        } 
+            if ($usuario->rol_id == 1) {
+                return redirect()->route('home'); 
+            } elseif ($usuario->rol_id == 2) {
+                return redirect()->route('homeUsuarios'); 
+            } 
 
-    } else {
-        return redirect()->route('login'); 
+        } else {
+            return redirect()->route('login'); 
+        }
     }
-}
 
 
     public function logout(){

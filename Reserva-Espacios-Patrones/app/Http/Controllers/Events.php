@@ -4,30 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eventos;
+use App\Models\Reserva;
 
 class Events extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function indexAdministradorEventos()
     {
-        // Cambiado para usar paginate en lugar de all()
-        $eventos = Eventos::paginate(6); // 6 eventos por página
+        
+        $eventos = Eventos::paginate(6); 
         return view('modules/dashboard/Administradores/Eventos/eventosCRUD', compact('eventos'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+   
     public function createAdministradorEventos()
     {
         return view('modules/dashboard/Administradores/Eventos/createEvento');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function crearEspacios(Request $request)
     {
         $post = new Eventos;
@@ -43,27 +38,21 @@ class Events extends Controller
         return to_route('indexAdministradorEventos');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function mostrarAdministradorEvento(string $id)
     {
         $evento = Eventos::findOrFail($id);
         return view('modules/dashboard/Administradores/Eventos/mostrarEvento', compact('evento'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function editarAdministradorEvento(string $id)
     {
         $evento = Eventos::findOrFail($id);
         return view('modules/dashboard/Administradores/Eventos/editarEvento', compact('evento'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function actualizarAdministradorEvento(Request $request, string $id)
     {
         $evento = Eventos::findOrFail($id);
@@ -78,20 +67,22 @@ class Events extends Controller
         return to_route('indexAdministradorEventos');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function eliminarAdministradorEvento(string $id)
-    {
-        $evento = Eventos::findOrFail($id);
-        $evento->delete();
+{
+    $evento = Eventos::findOrFail($id);
+    
+    
+    $evento->reservas()->delete(); 
 
-        return to_route('indexAdministradorEventos');
-    }
+    
+    $evento->delete();
 
-    /**
-     * Obtener todos los espacios (eventos).
-     */
+    return to_route('indexAdministradorEventos')->with('success', 'Evento eliminado correctamente.');
+}
+
+
+    
     public function obtenerEspacios()
     {
         $espacios = Eventos::all();

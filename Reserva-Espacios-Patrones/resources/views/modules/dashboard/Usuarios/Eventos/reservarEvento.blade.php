@@ -11,6 +11,22 @@
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
             <h2 class="text-3xl font-bold mb-6 text-center">Hacer Reserva de Espacio</h2>
+
+            @if ($errors->any())
+                <div class="bg-red-500 text-white p-4 mb-4 rounded">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="bg-green-500 text-white p-4 mb-4 rounded">
+                    {{ session('success') }}
+                </div>
+            @endif
             
             <form action="{{ route('crearReserva') }}" method="POST" class="space-y-4">
                 @csrf

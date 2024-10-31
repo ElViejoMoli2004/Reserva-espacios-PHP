@@ -14,7 +14,14 @@ class Eventos extends Model
     public $timestamps = false;
 
     public function reserva() {
-        return $this->hasOne(Reserva::class, 'espacio_id', 'id'); // Asegúrate de que los campos coincidan
+        return $this->hasOne(Reserva::class, 'espacio_id', 'id'); 
     }
+
+    
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class, 'espacio_id'); 
+    }
+
     
 }

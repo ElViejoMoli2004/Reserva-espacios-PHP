@@ -48,24 +48,28 @@
                     <p class="text-gray-600">Ubicación: {{ $evento->ubicacion }}</p>
             
                     <div class="mt-4 flex justify-between">
-                        @if(!$evento->reservado)
+                        @if(!$evento->reservado && !$evento->no_disponible)
                             <a href="{{ route('reservaEvento', ['id' => $evento->id]) }}" class="px-2 py-1 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition text-sm">
                                 <i class="fa-solid fa-list"></i> Reservar
                             </a>
                         @else
                             <span class="px-2 py-1 bg-gray-400 text-white rounded-lg shadow">Ya reservado</span>
-                            <div class="flex space-x-2">
-                                <a href="{{ route('editarUsuarioReserva', ['id' => $evento->id]) }}" class="px-2 py-1 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition text-sm">
-                                    <i class="fa-solid fa-edit"></i> Modificar
-                                </a>
-                                <form action="{{ route('eliminarUsuarioReserva', ['id' => $evento->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas cancelar esta reserva?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition text-sm">
-                                        <i class="fa-solid fa-trash"></i> Cancelar Reserva
-                                    </button>
-                                </form>
-                            </div>
+                            @if($evento->es_mio)
+                                <div class="flex space-x-2">
+                                    <a href="{{ route('editarUsuarioReserva', ['id' => $evento->id]) }}" class="px-2 py-1 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition text-sm">
+                                        <i class="fa-solid fa-edit"></i> Modificar
+                                    </a>
+                                    <form action="{{ route('eliminarUsuarioReserva', ['id' => $evento->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas cancelar esta reserva?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="px-2 py-1 bg-red-500 text-white rounded-lg shadow hover:bg-red-600 transition text-sm">
+                                            <i class="fa-solid fa-trash"></i> Cancelar Reserva
+                                        </button>
+                                    </form>
+                                </div>
+                            @else
+                                <span class="text-red-600">Reservado por otro usuario</span>
+                            @endif
                         @endif
                     </div>
                 </div>

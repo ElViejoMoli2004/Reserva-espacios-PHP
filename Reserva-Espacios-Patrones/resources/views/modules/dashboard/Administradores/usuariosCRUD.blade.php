@@ -107,7 +107,7 @@
                                                 <td>{{$item->created_at}}</td>
                                                 <td>{{$item->updated_at}}</td>
                                                 <td>
-                                                    <form action="{{ route('eliminarAdministrador', ['id' => $item->id]) }}" method="POST">
+                                                    <form action="{{ route('eliminarAdministrador', ['id' => $item->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                                                         @csrf
                                                         @method('DELETE')
                                                         <div class="btn-group" role="group">

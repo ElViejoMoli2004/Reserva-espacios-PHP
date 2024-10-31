@@ -73,9 +73,9 @@
                         <p class="text-gray-600">Capacidad: {{ $evento->capacidad }}</p>
                         <p class="text-gray-600">Tipo de Evento: {{ $evento->tipo_evento }}</p>
                         <p class="text-gray-600">Ubicación: {{ $evento->ubicacion }}</p>
-                
+
                         <div class="mt-4 flex justify-between">
-                            <form action="{{ route('eliminarAdministradorEvento', ['id' => $evento->id]) }}" method="POST">
+                            <form action="{{ route('eliminarAdministradorEvento', ['id' => $evento->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas borrar este espacio?');">
                                 @csrf
                                 @method('DELETE')
                                 <div class="flex space-x-2">
