@@ -42,6 +42,9 @@ Route::middleware("auth")->group(function () {
     Route::get('/editarUsuarioReserva/{id}', [EventsUsuarios::class, 'editarUsuarioReserva'])->name('editarUsuarioReserva');
     Route::put('/actualizarUsuarioReserva/{id}', [EventsUsuarios::class, 'actualizarUsuarioReserva'])->name('actualizarUsuarioReserva');
     Route::delete('/eliminarUsuarioReserva/{id}', [EventsUsuarios::class, 'cancelarReserva'])->name('eliminarUsuarioReserva');
+    Route::get('/reservaCreada', [EventsUsuarios::class, 'reservaCreada'])->name('reservaCreada');
+
+    
 
     
 

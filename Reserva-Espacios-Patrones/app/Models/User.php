@@ -16,6 +16,7 @@ class User extends Authenticatable
     protected $fillable = [
         'cedula', 
         'name',
+        'rol_id'
     ];
 
     protected $hidden = [

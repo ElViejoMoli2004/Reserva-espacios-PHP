@@ -11,4 +11,18 @@ class Reserva extends Model
 
     protected $table = 'reservas';
 
+
+    protected $fillable = [
+        'usuario_id',
+        'espacio_id',
+        'fecha_inicio',
+        'fecha_fin',
+    ];
+
+    
+    public function espacio(){
+        return $this->belongsTo(Eventos::class);
+    }
+
+
 }

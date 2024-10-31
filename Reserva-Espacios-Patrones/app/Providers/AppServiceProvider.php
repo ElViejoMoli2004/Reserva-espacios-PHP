@@ -4,23 +4,20 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Reserva;
-use App\Observers\ReservaObserver;
+use App\Services\EmailService;
+use App\Services\SMSService;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
+    
 
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        Reserva::observe(ReservaObserver::class);
+    public function register() {
+        $this->app->singleton(EmailService::class, function ($app) {
+            return new EmailService();
+        });
+    
     }
 }
