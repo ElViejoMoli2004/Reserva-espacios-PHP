@@ -57,7 +57,7 @@
                         <div class="card">
                             <div class="card-body p-4">
                                 <a href="{{ route('createAdministradorEventos') }}" class="px-6 py-2 bg-cyan-500 text-white rounded-lg shadow-md hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all">
-                                    <i class="fa-solid fa-plus"></i> Agregar Evento
+                                    <i class="fa-solid fa-plus"></i> Agregar Espacio
                                 </a>
                             </div>
                         </div>
