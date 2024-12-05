@@ -30,7 +30,7 @@
                                Usuarios
                             </a>
                          </li>
-                         
+
 {{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Usuarios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Eliminar Usuarios</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Historial de Actividades</a></li> --}}
@@ -49,25 +49,24 @@
 
 
 
-                <!-- Gestión de Reservas -->
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Reservas</h3>
+                    <h3 class="text-lg font-semibold mb-2">Acciones</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Reservas Actuales</a></li>
+                        <li><a href="{{route('indexLog')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Acciones</a></li>
 {{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Reservas</a></li>
                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Cancelar Reservas</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Notificaciones</a></li> --}}
-                    </ul>
+                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Notificaciones</a></li>
+                    </ul> --}}
                 </div>
 
-              
+
 
                 <div>
                   <h3 class="text-lg font-semibold mb-2">Salir del sistema</h3>
                   <ul class="space-y-2">
                     <li>
                       <a href="{{route('logout')}}" class="block py-2 px-4 rounded-lg bg-red-500 hover:bg-red-600">Salir</a>
-                  </li>                  
+                  </li>
                   </ul>
                 </div>
             </nav>
@@ -121,7 +120,7 @@
                   </div>
               </div>
           </div>
-          
+
         </main>
     </div>
     <script src=""></script>

@@ -15,40 +15,19 @@
         <aside class="w-64 bg-gray-900 text-white flex-shrink-0">
             <div class="p-4 text-center text-2xl font-bold">Menú Usuarios</div>
             <nav class="flex flex-col p-4 space-y-4">
-
-            
-
-
                 <div>
                     <h3 class="text-lg font-semibold mb-2">Gestión de Espacios</h3>
                     <ul class="space-y-2">
                         <li><a href="{{route('indexEventosUsuariosReserva')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Espacios</a></li>
-{{--                         <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('modificar')">Modificar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('eliminar')">Eliminar Espacios</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700" onclick="event.preventDefault(); loadForm('visualizar')">Visualización de Espacios</a></li> --}}
                     </ul>
                 </div>
-                
-
-                <!-- Gestión de Reservas -->
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Reservas</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Reservas Actuales</a></li>
-                        {{-- <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Modificar Reservas</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Cancelar Reservas</a></li>
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Notificaciones</a></li> --}}
-                    </ul>
-                </div>
-
-                
 
                 <div>
                   <h3 class="text-lg font-semibold mb-2">Salir del sistema</h3>
                   <ul class="space-y-2">
                     <li>
                       <a href="{{route('logout')}}" class="block py-2 px-4 rounded-lg bg-red-500 hover:bg-red-600">Salir</a>
-                  </li>                  
+                  </li>
                   </ul>
                 </div>
             </nav>
@@ -59,10 +38,9 @@
             <div class="text-center">
                 <h1 class="text-7xl font-semibold mb-6">Bienvenido al Sistema</h1>
                 <div id="content"></div>
-                <!-- Aquí puedes agregar el contenido dinámico para cada sección -->
             </div>
         </main>
-        
+
     </div>
     <script src=""></script>
 </body>

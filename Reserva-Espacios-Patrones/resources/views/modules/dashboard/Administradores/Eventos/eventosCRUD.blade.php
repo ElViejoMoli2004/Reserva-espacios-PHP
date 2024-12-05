@@ -32,9 +32,9 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lg font-semibold mb-2">Gestión de Reservas</h3>
+                    <h3 class="text-lg font-semibold mb-2">Acciones</h3>
                     <ul class="space-y-2">
-                        <li><a href="#" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Reservas Actuales</a></li>
+                        <li><a href="{{route('indexLog')}}" class="block py-2 px-4 rounded-lg bg-gray-800 hover:bg-gray-700">Ver Acciones</a></li>
                     </ul>
                 </div>
                 <div>

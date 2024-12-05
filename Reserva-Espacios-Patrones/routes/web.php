@@ -5,6 +5,7 @@ use App\Http\Controllers\Users;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Events;
 use App\Http\Controllers\EventsUsuarios;
+use App\Http\Controllers\Acciones;
 
 Route::middleware("guest")->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('index');
@@ -25,11 +26,12 @@ Route::middleware("auth")->group(function () {
     Route::get('/crear', [Users::class, 'createUsuarios'])->name('createUsuarios');
     Route::post('/crearUsuarios', [Users::class, 'crearUsuarios'])->name('crearUsuarios');
     Route::get('/mostrar/{id}', [Users::class, 'mostrarAdministrador'])->name('mostrarAdministrador');
-    Route::get('/editar/{id}', [Users::class, 'editarAdministrador'])->name('editarAdministrador'); 
+    Route::get('/editar/{id}', [Users::class, 'editarAdministrador'])->name('editarAdministrador');
     Route::put('/actualizar/{id}', [Users::class, 'actualizarAdministrador'])->name('actualizarAdministrador');
     Route::delete('/eliminar/{id}', [Users::class, 'eliminarAdministrador'])->name('eliminarAdministrador');
     Route::get('/indexAdministradorEventos', [Events::class, 'indexAdministradorEventos'])->name('indexAdministradorEventos');
     Route::get('/crearEventos', [Events::class, 'createAdministradorEventos'])->name('createAdministradorEventos');
+    Route::post('/registrar-log', [Events::class, 'registrarLog'])->name('registrarLog');
     Route::post('/crearEspacios', [Events::class, 'crearEspacios'])->name('crearEspacios');
     Route::get('/api/espacios', [Events::class, 'obtenerEspacios'])->name('obtenerEspacios');
     Route::get('/mostrarEvento/{id}', [Events::class, 'mostrarAdministradorEvento'])->name('mostrarAdministradorEvento');
@@ -43,11 +45,12 @@ Route::middleware("auth")->group(function () {
     Route::put('/actualizarUsuarioReserva/{id}', [EventsUsuarios::class, 'actualizarUsuarioReserva'])->name('actualizarUsuarioReserva');
     Route::delete('/eliminarUsuarioReserva/{id}', [EventsUsuarios::class, 'cancelarReserva'])->name('eliminarUsuarioReserva');
     Route::get('/reservaCreada', [EventsUsuarios::class, 'reservaCreada'])->name('reservaCreada');
+    Route::get('/logs', [Acciones::class, 'indexLog'])->name('indexLog');
 
-    
 
-    
 
-    
+
+
+
 
 });

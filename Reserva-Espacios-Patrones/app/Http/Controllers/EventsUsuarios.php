@@ -15,6 +15,7 @@ use App\Console\Commands\EnviarMensajeCommand;
 use App\Http\Controllers\Users as ControllersUsers;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use App\Models\Log;
 
 class EventsUsuarios extends Controller
 {
@@ -24,14 +25,13 @@ class EventsUsuarios extends Controller
 
     public function indexEventosUsuariosReserva() {
         $eventos = Eventos::paginate(6);
-        $usuarioId = Auth::user()->id; 
+        $usuarioId = Auth::user()->id;
 
         foreach ($eventos as $evento) {
-            
             $reserva = Reserva::where('espacio_id', $evento->id)
-                              ->where('usuario_id', $usuarioId) 
+                              ->where('usuario_id', $usuarioId)
                               ->first();
-            
+
             $evento->reservado = !is_null($reserva);
             $evento->es_mio = $reserva ? true : false;
 
@@ -43,11 +43,20 @@ class EventsUsuarios extends Controller
         return view('modules.dashboard.Usuarios.Eventos.mostrarEventosReserva', compact('eventos', 'usuarioId'));
     }
 
+    public function registrarLog($usuario_id, $accion) {
+        $log = new Log();
+        $log->usuario_id = $usuario_id;
+        $log->accion = $accion;
+        $log->save();
+
+        return response()->json(['message' => 'Log registrado correctamente']);
+    }
+
     public function reservaEvento($id) {
-        $evento = Eventos::find($id); 
-        $usuarioId = Auth::user()->id; 
-        $espacioId = $evento->id; 
-        $espacios = Eventos::all(); 
+        $evento = Eventos::find($id);
+        $usuarioId = Auth::user()->id;
+        $espacioId = $evento->id;
+        $espacios = Eventos::all();
 
         return view('modules.dashboard.Usuarios.Eventos.reservarEvento', compact('usuarioId', 'espacioId', 'evento', 'espacios'));
     }
@@ -82,10 +91,9 @@ class EventsUsuarios extends Controller
                                  ->first();
 
         if ($existeReserva) {
-            $existeReserva->delete(); 
-        }   
+            $existeReserva->delete();
+        }
 
-        
         $reserva = new Reserva();
         $reserva->usuario_id = $request->usuario_id;
         $reserva->espacio_id = $request->espacio_id;
@@ -94,34 +102,34 @@ class EventsUsuarios extends Controller
         $reserva->save();
 
         
+        $this->registrarLog(Auth::user()->id, 'Crear Reserva: Reserva creada para el evento: ' . $espacio->nombre);
+
         $comandoMensaje = new CommandsEnviarMensajeCommand($usuario->email, $reserva);
         $comandoMensaje->ejecutar();
 
-        
         Session::flash('success', 'Reserva creada y mensaje enviado exitosamente.');
-        
+
         return $this->reservaCreada($reserva);
     }
 
     public function reservaCreada(Reserva $reserva) {
-        
         return view('reserva_creada', [
-            'fechaInicio' => $reserva->fecha_inicio, 
-            'fechaFin' => $reserva->fecha_fin, 
+            'fechaInicio' => $reserva->fecha_inicio,
+            'fechaFin' => $reserva->fecha_fin,
         ]);
     }
 
     public function editarUsuarioReserva(string $id) {
-        $evento = Eventos::findOrFail($id); 
-        $usuarioId = Auth::user()->id; 
-        $espacioId = $evento->id; 
+        $evento = Eventos::findOrFail($id);
+        $usuarioId = Auth::user()->id;
+        $espacioId = $evento->id;
 
         $reserva = Reserva::where('espacio_id', $evento->id)
                           ->where('usuario_id', $usuarioId)
-                          ->first(); 
+                          ->first();
 
         if (!$reserva) {
-            return redirect()->route('indexEventosUsuariosReserva'); 
+            return redirect()->route('indexEventosUsuariosReserva');
         }
 
         $fecha_inicio = $reserva->fecha_inicio;
@@ -133,29 +141,39 @@ class EventsUsuarios extends Controller
     public function actualizarUsuarioReserva(Request $request, string $id) {
         $request->validate([
             'fecha_inicio' => 'required|date',
-            'fecha_fin' => 'required|date|after:fecha_inicio', 
+            'fecha_fin' => 'required|date|after:fecha_inicio',
         ]);
 
-        $usuarioId = Auth::user()->id; 
+        $usuarioId = Auth::user()->id;
         $reserva = Reserva::where('espacio_id', $id)
                           ->where('usuario_id', $usuarioId)
-                          ->firstOrFail(); 
+                          ->firstOrFail();
 
         $reserva->fecha_inicio = $request->fecha_inicio;
         $reserva->fecha_fin = $request->fecha_fin;
         $reserva->save();
 
+
+        $evento = Eventos::find($id);
+        $this->registrarLog(Auth::user()->id, 'Actualizar Reserva: Reserva actualizada para el evento: ' . $evento->nombre);
+
         return redirect()->route('indexEventosUsuariosReserva')->with('success', 'Reserva actualizada exitosamente.');
     }
 
     public function cancelarReserva($id) {
-        $usuarioId = Auth::user()->id; 
+        $usuarioId = Auth::user()->id;
 
         $reserva = Reserva::where('espacio_id', $id)
                           ->where('usuario_id', $usuarioId)
-                          ->firstOrFail(); 
-                          
-        $reserva->delete(); 
+                          ->firstOrFail();
+
+        $evento = Eventos::find($id);
+
+        $reserva->delete();
+
+
+        $this->registrarLog(Auth::user()->id, 'Cancelar Reserva: Reserva cancelada para el evento: ' . $evento->nombre);
+
         return redirect()->route('indexEventosUsuariosReserva')->with('success', 'Reserva cancelada exitosamente.');
     }
 }

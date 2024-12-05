@@ -34,7 +34,7 @@ class AuthController extends Controller
         $post->segundo_apellido = $request->segundo_apellido;
         $post->cedula = $request->cedula;
         $post->email = $request->email;
-        $post->password = Hash::make($request->password); // Encriptar la contraseña
+        $post->password = Hash::make($request->password); 
         $post->telefono = $request->telefono;
         $post->rol_id = $request->rol_id;
 
@@ -50,19 +50,19 @@ class AuthController extends Controller
             'password' => $request->password
         ];
 
-    
+
         if (Auth::attempt($credenciales)) {
             $usuario = Auth::user();
 
-        
+
             if ($usuario->rol_id == 1) {
-                return redirect()->route('home'); 
+                return redirect()->route('home');
             } elseif ($usuario->rol_id == 2) {
-                return redirect()->route('homeUsuarios'); 
-            } 
+                return redirect()->route('homeUsuarios');
+            }
 
         } else {
-            return redirect()->route('login'); 
+            return redirect()->route('login');
         }
     }
 
@@ -75,10 +75,10 @@ class AuthController extends Controller
 
     public function home()
     {
-        $usuario = Auth::user(); 
+        $usuario = Auth::user();
         return view("modules.dashboard.home", compact('usuario'));
     }
 
-    
+
 
 }
